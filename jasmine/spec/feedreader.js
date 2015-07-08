@@ -35,6 +35,7 @@ $(function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
+            });
         });
 
 
@@ -46,6 +47,7 @@ $(function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name).not.toBe('');
+            });
         });
     });
 
@@ -60,16 +62,16 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-         it('is hidden by default', function() {
+        it('is hidden by default', function() {
             expect(body.hasClass('menu-hidden')).toBe(true);
-         });
+        });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('is visible when clicked', function() {
+        it('is visible when clicked', function() {
             //Set the visible and hide status of the menuIcon.
             var _visible = body.attr('class'),
                 _hide;
@@ -97,7 +99,7 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
-            });
+            })
         });
 
         /* TODO: Write a test that ensures when the loadFeed
@@ -107,9 +109,8 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-         // I pass the done() function through here because I want to run this test
-         it('can load entries', function(done){
-
+        // I pass the done() function through here because I want to run this test
+        it('can load entries', function(done){
             var numOfRows = $('.entry').length;
             expect(numOfRows).toBeGreaterThan(0);
             done();
@@ -126,13 +127,13 @@ $(function() {
             entry = $('.entry')[0].innerText;
             //loading second feed
             loadFeed(1, done);
-    });
+        });
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         it('changes the content when loaded',function(){
+        it('changes the content when loaded',function(done){
         //saving text of the first entry into var entryAfterchange
         entryAfterchange = $('.entry')[0].innerText;
         // chacking if the content has changed after loading new feed (comapring entry and entryAfterchange)
@@ -140,9 +141,9 @@ $(function() {
           done();
         });
 
-    afterEach(function(done){
+        afterEach(function(done){
         //loading back the first feed
             loadFeed(0, done);
-    });
+        });
     });
 }());
