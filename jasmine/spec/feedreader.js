@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-        it('has a url', function() {
+        it('have a url', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
@@ -43,7 +43,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-        it('has a name', function() {
+        it('have a name', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name).not.toBe('');
@@ -133,7 +133,7 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        it('changes the content when loaded',function(done){
+        it('changes the content when new content is loaded',function(done){
         //saving text of the first entry into var entryAfterchange
         entryAfterchange = $('.entry')[0].innerText;
         // chacking if the content has changed after loading new feed (comapring entry and entryAfterchange)
