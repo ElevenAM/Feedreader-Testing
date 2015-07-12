@@ -119,30 +119,25 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
-        var entry,
-            entryAfterchange;
+        var entryTexts;
 
-        beforeEach(function(done){
-            //saving text of te first entry into var entry
-            entry = $('.entry')[0].innerText;
-            //loading second feed
+    // Store the content of the initial screen then load the new feed.
+        beforeEach(function(done) {
+            entryTexts = $('.feed').find('h2').text();
             loadFeed(1, done);
         });
-
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
         it('changes the content when new content is loaded',function(done){
-        //saving text of the first entry into var entryAfterchange
-        entryAfterchange = $('.entry')[0].innerText;
-        // chacking if the content has changed after loading new feed (comapring entry and entryAfterchange)
-        expect(entry).not.toBe(entryAfterchange);
-          done();
+        //Using the 'h2' tag to grab seems to work much better than .innerText
+            expect($('.feed').find('h2').text()).not.toBe(entryTexts);
+            done();
         });
 
-        afterEach(function(done){
-        //loading back the first feed
+    // Go back to initial feed when finished
+        afterEach(function(done) {
             loadFeed(0, done);
         });
     });
