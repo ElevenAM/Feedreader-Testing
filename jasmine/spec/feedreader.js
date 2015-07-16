@@ -8,7 +8,29 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
+
+var complete;
+
+//log the Critical Rendering Path to measure page load speed
+//Normally I'd put this in the main.js file but I'll put this here for clarity
+function logCRP() {
+    var t = window.performance.timing,
+    dcl = t.domContentLoadedEventStart - t.domLoading,
+    complete = t.domComplete - t.domLoading;
+};
+
+window.addEventListener("load", function(event) {
+  logCRP();
+});
+
+
 $(function() {
+    describe('Page', function() {
+        //Made up a new test to test page load speed. A feedreader should load quickly!
+        it('loads quickly', function() {
+            expect(complete).not.toBeGreaterThan(1);
+        })
+    })
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
