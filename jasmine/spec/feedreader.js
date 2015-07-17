@@ -72,14 +72,17 @@ $(function() {
 
           //Test to make sure that the menu changes visibility when clicked
         it('is visible when clicked', function() {
-            //Set the visible and hide status of the menuIcon.
-            var visible = body.attr('class');
+            //Makes sure the initial state is hidden and sets variables
+            body.removeClass();
+            body.addClass('menu-hidden');
+            var visibility = body.attr('class');
             var hiding = 'menu-hidden';
 
-            //Track down the menuIcon click
+            //Track down the menuIcon click and make sure menu is visible on first click
             menuIcon.click();
             expect(body.attr('class')).not.toBe(hiding);
 
+            //Second menuIcon click to make menu hidden on second click
             menuIcon.click();
             expect(body.attr('class')).toBe(hiding);
         });
