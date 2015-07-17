@@ -16,7 +16,7 @@ var complete;
 function logCRP() {
     var t = window.performance.timing;
     var dcl = t.domContentLoadedEventStart - t.domLoading;
-    var complete = t.domComplete - t.domLoading;
+        complete = t.domComplete - t.domLoading;
 }
 
 window.addEventListener("load", function() {
@@ -75,7 +75,6 @@ $(function() {
             //Makes sure the initial state is hidden and sets variables
             body.removeClass();
             body.addClass('menu-hidden');
-            var visibility = body.attr('class');
             var hiding = 'menu-hidden';
 
             //Track down the menuIcon click and make sure menu is visible on first click
@@ -110,9 +109,10 @@ $(function() {
     // Store the content of the initial screen then load the new feed.
         beforeEach(function(done) {
             $('.feed').empty();
-            loadFeed(0, done);
-            entryTexts = $('.feed').find('h2').text();
-            loadFeed(1, done);
+            loadFeed(0, function(){
+                entryTexts = $('.feed').find('h2').text();
+                loadFeed(1,done);
+            });
         });
 
         //Test ensuring content is changed when new feed is loaded by loadFeed()
